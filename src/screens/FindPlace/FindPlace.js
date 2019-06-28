@@ -7,22 +7,9 @@ class FindPlaceScreen extends Component {
         const selPlace = this.props.places.find(place => {
             return place.key === key;
         });
-        this.props.navigation.navigate('PlaceDetailScreen');
-        // Navigation.push(this.props.componentId, {
-        //     component: {
-		// 	  name: 'awesome-places.PlaceDetailScreen',
-		// 	  passProps:{
-		// 		  selectedPlace:selPlace
-		// 	  },
-		// 	  options: {
-		// 		topBar: {
-		// 		  title: {
-		// 			text: selPlace.name
-		// 		  }
-		// 		}
-		// 	  }
-        //     }
-        // });
+        this.props.navigation.push('PlaceDetailScreen',{
+            selectedPlace:selPlace
+        });
     }
     render(){
         return(

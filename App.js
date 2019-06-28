@@ -13,7 +13,6 @@ import configureStore from "./src/store/configureStore";
 import DetailScreen from './src/screens/PlaceDetail/PlaceDetail'
 
 const store = configureStore();
-
 class App extends Component {
   render() {
     return (
@@ -31,8 +30,8 @@ const FindPlaceStack = createStackNavigator({
     navigationOptions:{
       title:"FindPlace"
     }
-  }
-
+  },
+  PlaceDetailScreen:{screen:DetailScreen}
 },{ headerLayoutPreset: 'center'});
 const SharePlaceStack = createStackNavigator(
   {
@@ -80,15 +79,14 @@ const auth = createStackNavigator({
   },
 },{ headerLayoutPreset: 'center'});
 
-const PlaceDetailScreen = createStackNavigator({
-  PlaceDetailScreen:{screen:DetailScreen}
-});
+// const PlaceDetailScreen = createStackNavigator({
+//   PlaceDetailScreen:{screen:DetailScreen}
+// });
 
 const AppSwitchNavigator = createSwitchNavigator(
   {
     Auth:auth,
-    SharePlace:{screen:AppBottomTabNavigator},
-    PlaceDetailScreen:{screen:PlaceDetailScreen}
+    SharePlace:{screen:AppBottomTabNavigator}
   },
   {initialRouteName:"Auth"}
 );

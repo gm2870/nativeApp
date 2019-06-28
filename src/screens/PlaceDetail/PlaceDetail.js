@@ -6,14 +6,19 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { deletePlace } from "../../store/actions/index";
 class PlaceDetail extends Component {
   placeDeletedHandler = () => {
-
+    const { navigation } = this.props;
+    const selectedPlace =navigation.getParam('selectedPlace');
+    this.props.onDeletePlace(selectedPlace.key);
+    navigation.goBack();
   }
   render() {
+    const { navigation } = this.props;
+    const selectedPlace =navigation.getParam('selectedPlace');
     return (
       <View style={styles.container}>
         <View>
-          <Image source={this.props.selectedPlace.image} style={styles.placeImage} />
-          <Text style={styles.placeName}>{this.props.selectedPlace.name}</Text>
+          <Image source={selectedPlace.image} style={styles.placeImage} />
+          <Text style={styles.placeName}>{selectedPlace.name}</Text>
         </View>
         <View>
           <TouchableOpacity onPress={this.placeDeletedHandler}>
